@@ -1,0 +1,13 @@
+// Actions Types
+////////////////////////////////////////////////////////////
+
+export const ACTION_EXAMPLE = 'ACTION_EXAMPLE';
+
+// Action Creators
+////////////////////////////////////////////////////////////
+
+export const actionExample = () => {
+  return {
+    type: ACTION_EXAMPLE,
+  };
+};
