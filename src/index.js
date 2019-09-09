@@ -8,7 +8,7 @@ import App from './containers/App';
 
 import * as serviceWorker from './serviceWorker';
 
-import store, { history } from './store/store';
+import store from './store/store';
 
 ReactDOM.render((
   <Provider store={store}>

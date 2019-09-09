@@ -1,4 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+
+import Player from './Player';
 
 import '../styles/_stylebase.scss';
 
@@ -10,6 +12,7 @@ class App extends Component {
           <div className="card page__content">
           </div>
           <div className="card page__player">
+            <Player />
           </div>
         </div>
       </div>
