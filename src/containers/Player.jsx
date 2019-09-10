@@ -1,4 +1,4 @@
-import React, { Component, Fragment  } from 'react';
+import React, { Component  } from 'react';
 import { connect } from 'react-redux';
 import AudioPlayer from "react-h5-audio-player";
 import PropTypes from 'prop-types';
@@ -25,7 +25,6 @@ class Player extends Component {
     const audio = document.getElementsByTagName('audio')[0];
     audio.onloadedmetadata = () => {
       const duration = Math.floor(audio.duration);
-      console.log('audio.duration', duration);
       const total = document.getElementById('track-duration');
       total.innerHTML += duration;
     };
@@ -41,27 +40,25 @@ class Player extends Component {
     const { track, startButton } = this.state;
 
     return (
-      <Fragment>
-        <div className="player">
-          <AudioPlayer
-            src={ `${process.env.PUBLIC_URL}${AUDIO_PATH}${track}` }
-            onPlay={e => {
-              console.log("onPlay");
-              if (startButton) {
-                e.preventDefault();
-                const button = document.querySelector('.toggle-play-button');
-                button.click();
-                button.classList.add('toggle-play-button--after-firs-click');
-                this.setStartButtonToFalse();
-              }
-            }}
-            onPause={e => console.log("onPause")}
-            listenInterval={ LISTEN_INTERVAL }
-            onListen={e => console.log(e)}
-          />
-          <span className="player__track-duration" id="track-duration"></span>
-        </div>
-      </Fragment>
+      <div className="player">
+        <AudioPlayer
+          src={ `${process.env.PUBLIC_URL}${AUDIO_PATH}${track}` }
+          onPlay={e => {
+            console.log("onPlay");
+            if (startButton) {
+              e.preventDefault();
+              const button = document.querySelector('.toggle-play-button');
+              button.click();
+              button.classList.add('toggle-play-button--after-firs-click');
+              this.setStartButtonToFalse();
+            }
+          }}
+          onPause={e => console.log("onPause")}
+          listenInterval={ LISTEN_INTERVAL }
+          onListen={e => console.log(e)}
+        />
+        <span className="player__track-duration" id="track-duration"></span>
+      </div>
     );
   }
 }
