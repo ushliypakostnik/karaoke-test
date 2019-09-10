@@ -21,13 +21,40 @@
   }
 
   &__content {
-    min-height: 100px;
+    min-height: 300px;
     width: 100%;
-    margin-bottom: $gutter * 3;
+    margin-bottom: $gutter * 2;
+    padding: $gutter;
+
+    &--loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__player {
-    min-height: 100px;
     width: 100%;
+  }
+}
+
+.content {
+  header {
+    border-bottom: 1px solid $color_border;
+  }
+}
+
+
+// React H5 Audio Player customization
+//////////////////////////////////////////////////////
+
+.react-h5-audio-player {
+
+  .flex {
+    box-shadow: none !important;
+  }
+
+  .volume-controls {
+    display: none;
   }
 }

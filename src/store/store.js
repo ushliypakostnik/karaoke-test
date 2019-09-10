@@ -16,28 +16,29 @@ if (process.env.NODE_ENV !== 'production') {
   middlewares.push(loggerMiddleware);
 }
 
+/*
 const localStorageMiddleware = ({getState}) => {
   return (next) => (action) => {
-    /* const result = next(action);
+    const result = next(action);
     localStorage.setItem('localCollection', JSON.stringify(
         getState().rootReducer.collection
     ));
-    return result; */
+    return result;
   };
 };
-middlewares.push(localStorageMiddleware);
+middlewares.push(localStorageMiddleware);*/
 
 const reHydrateStore = (state) => {
-  if (localStorage.getItem('localCollection') !== null) {
-    /* const localCollection = JSON.parse(localStorage.getItem('localCollection'));
+  /* if (localStorage.getItem('localCollection') !== null) {
+    const localCollection = JSON.parse(localStorage.getItem('localCollection'));
     const _state = Object.assign({}, state, {
         rootReducer: {
           ...state.rootReducer,
           collection: localCollection,
         },
     });
-    return _state;*/
-  }
+    return _state;
+  } */
   return state;
 };
 
@@ -55,7 +56,5 @@ function configureStore(state) {
 const store = configureStore(INITIAL_STATE);
 
 export const history = syncHistoryWithStore(browserHistory, store);
-
-// console.log('Store: ', store.getState());
 
 export default store;

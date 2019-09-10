@@ -1,9 +1,10 @@
 {
-  "name": "pwa-example",
+  "name": "karaoke-example",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "antd": "^3.21.4",
+    "classnames": "^2.2.6",
     "history": "^4.9.0",
     "howler": "^2.1.2",
     "node-sass": "^4.12.0",
