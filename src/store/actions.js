@@ -47,7 +47,6 @@ export const fetchTrackTranscript = (name) => {
     return fetch(`${AUDIO_PATH}${name}.json`)
       .then((response) => response.json())
       .then((transcript) =>{
-          console.log(transcript);
           dispatch(requestTrackTranscriptSuccess(transcript));
       },
       (error) => {

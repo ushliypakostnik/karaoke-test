@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const Phrase = ({name, ...props}) => (
+import { Avatar } from 'antd';
+import '../../node_modules/antd/lib/avatar/style/index.css';
+
+const Phrase = ({ ...props}) => (
   <div className="phrase">
-    <h1>{ name }</h1>
-    {props.children}
+    <Avatar size={64} icon="user" />
   </div>
 );
 

@@ -1,21 +1,51 @@
 import React, { Component  } from 'react';
-import AudioPlayer from "react-h5-audio-player";
+import { connect } from 'react-redux';
+import ReactAudioPlayer from 'react-audio-player';
+import PropTypes from 'prop-types';
 
-import { LISTEN_INTERVAL } from '../store/constants';
+import {
+  AUDIO_PATH,
+  LISTEN_INTERVAL,
+} from '../store/constants';
 
 class Player extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+    };
+  }
+
+  static getDerivedStateFromProps = (nextProps) => ({
+    track: nextProps.track,
+  });
+
+
   render() {
+    const { track } = this.state;
+    console.log('Player: ', track);
+
     return (
-      <div className="player">
-        <AudioPlayer
-          src={process.env.PUBLIC_URL + '/audio/audio.wav'}
-          onPlay={e => console.log("onPlay")}
-          listenInterval={ LISTEN_INTERVAL }
-          onListen={e => console.log(e)}
-        />
-      </div>
+      <ReactAudioPlayer
+        className="player"
+        autoPlay={ false }
+        src={ `${process.env.PUBLIC_URL}${AUDIO_PATH}${track}` }
+        controls
+        listenInterval={10}
+        onPlay={e => console.log("onPlay")}
+        onListen={e => console.log(e)}
+        onLoadedMetadata={e => console.log(e)}
+      />
     );
   }
 }
 
-export default Player;
+Player.propTypes = {
+  track: PropTypes.string,
+};
+
+const mapStateToProps = (state) => ({
+  track: state.rootReducer.track,
+});
+
+export default connect(mapStateToProps, null)(Player);

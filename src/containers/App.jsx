@@ -29,6 +29,7 @@ class App extends Component {
   static getDerivedStateFromProps = (nextProps) => ({
     isLoaded: nextProps.isLoaded,
     track: nextProps.track,
+    transcript: nextProps.transcript,
   });
 
   componentDidMount() {
@@ -37,7 +38,7 @@ class App extends Component {
   }
 
   render() {
-    const { isLoaded, track } = this.state;
+    const { isLoaded, track, transcript } = this.state;
     let ContentClass = classNames('card', 'page__content', {
       'page__content--loading': !isLoaded,
     });
@@ -47,7 +48,10 @@ class App extends Component {
         <div className="page__container">
           <div className={ ContentClass }>
             {!isLoaded ? <Spin size="large" /> :
-            <Content name={ track }>
+            <Content
+              name={ track }
+              transcript={ transcript }
+            >
             </Content>}
           </div>
           <div className="card page__player">
@@ -62,11 +66,13 @@ class App extends Component {
 App.propTypes = {
   isLoaded: PropTypes.bool.isRequired,
   track: PropTypes.string,
+  transcript: PropTypes.arrayOf(PropTypes.object),
 };
 
 const mapStateToProps = (state) => ({
   isLoaded: !state.rootReducer.isFetching,
   track: state.rootReducer.track,
+  transcript: state.rootReducer.transcript,
 });
 
 const mapDispatchToProps = (dispatch) => ({
