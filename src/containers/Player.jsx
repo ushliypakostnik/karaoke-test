@@ -1,6 +1,6 @@
-import React, { Component  } from 'react';
+import React, { Component, Fragment  } from 'react';
 import { connect } from 'react-redux';
-import ReactAudioPlayer from 'react-audio-player';
+import AudioPlayer from "react-h5-audio-player";
 import PropTypes from 'prop-types';
 
 import {
@@ -13,6 +13,7 @@ class Player extends Component {
     super(props);
 
     this.state = {
+      startButton: true,
     };
   }
 
@@ -20,22 +21,37 @@ class Player extends Component {
     track: nextProps.track,
   });
 
+  componentDidMount() {
+
+  }
+
+  setStartButtonToFalse = () => {
+    this.setState({
+      startButton: false,
+    });
+  }
 
   render() {
-    const { track } = this.state;
-    console.log('Player: ', track);
+    const { track, startButton } = this.state;
 
     return (
-      <ReactAudioPlayer
-        className="player"
-        autoPlay={ false }
-        src={ `${process.env.PUBLIC_URL}${AUDIO_PATH}${track}` }
-        controls
-        listenInterval={10}
-        onPlay={e => console.log("onPlay")}
-        onListen={e => console.log(e)}
-        onLoadedMetadata={e => console.log(e)}
-      />
+      <Fragment>
+
+          <AudioPlayer
+            autoPlay={ false }
+            src={ `${process.env.PUBLIC_URL}${AUDIO_PATH}${track}` }
+            onPlay={e => {
+              console.log("onPlay");
+              if (startButton) {
+                const button = document.querySelector('.toggle-play-button');
+                button.click();
+                this.setStartButtonToFalse();
+              }
+            }}
+            listenInterval={ LISTEN_INTERVAL }
+            onListen={e => console.log(e)}
+          />
+      </Fragment>
     );
   }
 }
