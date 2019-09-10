@@ -8,12 +8,9 @@ export const LISTEN_INTERVAL = 100;
 
 export const INITIAL_STATE = {
   rootReducer: {
-    track: null,
     isFetching: false,
+    track: null,
     transcript: [],
     error: null,
   },
 };
-
-export const LOCAL = {
-}

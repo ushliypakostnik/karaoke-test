@@ -44,6 +44,18 @@
   }
 }
 
+.player {
+  position: relative;
+
+  &__track-duration {
+    position: absolute;
+    top: 23px;
+    right: 21px;
+    z-index: 1000;
+    background: $color_white;
+  }
+}
+
 
 // React H5 Audio Player customization
 //////////////////////////////////////////////////////
@@ -56,5 +68,28 @@
 
   .volume-controls {
     display: none;
+  }
+
+  .toggle-play-button {
+    visibility: hidden;
+
+    &--after-firs-click {
+      visibility: visible;
+    }
+  }
+
+  .progress-bar-wrapper {
+    padding-top: 19px !important;
+    padding-right: 140px !important;
+  }
+
+  .indicator {
+    top: 11px !important;
+  }
+
+  .audio-info {
+    top: 8px;
+    right: 20px;
+    position: absolute;
   }
 }

@@ -22,7 +22,13 @@ class Player extends Component {
   });
 
   componentDidMount() {
-
+    const audio = document.getElementsByTagName('audio')[0];
+    audio.onloadedmetadata = () => {
+      const duration = Math.floor(audio.duration);
+      console.log('audio.duration', duration);
+      const total = document.getElementById('track-duration');
+      total.innerHTML += duration;
+    };
   }
 
   setStartButtonToFalse = () => {
@@ -36,21 +42,25 @@ class Player extends Component {
 
     return (
       <Fragment>
-
+        <div className="player">
           <AudioPlayer
-            autoPlay={ false }
             src={ `${process.env.PUBLIC_URL}${AUDIO_PATH}${track}` }
             onPlay={e => {
               console.log("onPlay");
               if (startButton) {
+                e.preventDefault();
                 const button = document.querySelector('.toggle-play-button');
                 button.click();
+                button.classList.add('toggle-play-button--after-firs-click');
                 this.setStartButtonToFalse();
               }
             }}
+            onPause={e => console.log("onPause")}
             listenInterval={ LISTEN_INTERVAL }
             onListen={e => console.log(e)}
           />
+          <span className="player__track-duration" id="track-duration"></span>
+        </div>
       </Fragment>
     );
   }

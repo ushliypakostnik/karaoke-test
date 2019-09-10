@@ -24,7 +24,7 @@ class App extends Component {
     this.state = {
       isLoaded: false,
     };
-  }
+  };
 
   static getDerivedStateFromProps = (nextProps) => ({
     isLoaded: nextProps.isLoaded,
@@ -35,7 +35,7 @@ class App extends Component {
   componentDidMount() {
     this.props.setTrack(CONTENT[0].name);
     this.props.fetchTrackTranscript(CONTENT[0].name);
-  }
+  };
 
   render() {
     const { isLoaded, track, transcript } = this.state;
@@ -61,7 +61,7 @@ class App extends Component {
       </div>
     );
   }
-}
+};
 
 App.propTypes = {
   isLoaded: PropTypes.bool.isRequired,
