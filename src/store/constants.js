@@ -7,7 +7,7 @@ export const CONTENT = [
 
 export const AUDIO_PATH = 'audio/';
 
-// Player ivterval - the less accurate karaoke works
+// Player ivterval - the smaller the neater the karaoke works
 export const LISTEN_INTERVAL = 1;
 
 export const INITIAL_STATE = {
