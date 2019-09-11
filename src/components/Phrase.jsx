@@ -21,6 +21,8 @@ const Phrase = ({time, words}) => (
         return <Word
                  key={ index }
                  word={ word.word }
+                 timeStart={ word.timeStart }
+                 timeEnd={ word.timeEnd }
                />;
       })}
     </div>
@@ -28,7 +30,8 @@ const Phrase = ({time, words}) => (
 );
 
 Phrase.propTypes = {
-
+  timeStart: PropTypes.string,
+  word: PropTypes.object,
 };
 
 export default Phrase;

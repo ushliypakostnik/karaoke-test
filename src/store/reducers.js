@@ -5,6 +5,7 @@ import {
   REQUEST_TRACK_TRANSCRIPT,
   REQUEST_TRACK_TRANSCRIPT_SUCCESS,
   REQUEST_TRACK_TRANSCRIPT_ERROR,
+  SET_CURRENT_TIME,
 } from './actions';
 
 const rootReducer = (state, action) => {
@@ -30,6 +31,10 @@ const rootReducer = (state, action) => {
       return Object.assign({}, state, {
          isFetching: false,
          error: action.error,
+      });
+    case SET_CURRENT_TIME:
+      return Object.assign({}, state, {
+         currentTime: action.currentTime,
       });
     default:
       return state;

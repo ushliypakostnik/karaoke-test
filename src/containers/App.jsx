@@ -39,14 +39,14 @@ class App extends Component {
 
   render() {
     const { isLoaded, track, transcript } = this.state;
-    let ContentClass = classNames('card', 'page__content', {
+    let contentClass = classNames('card', 'page__content', {
       'page__content--loading': !isLoaded,
     });
 
     return (
       <div className="page">
         <div className="page__container">
-          <div className={ ContentClass }>
+          <div className={ contentClass }>
             {!isLoaded ? <Spin size="large" /> :
             <Content
               title={ track }

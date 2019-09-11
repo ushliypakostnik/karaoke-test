@@ -8,12 +8,14 @@ import {
   LISTEN_INTERVAL,
 } from '../store/constants';
 
+import { setCurrentTime } from '../store/actions';
+
 class Player extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentTime: 0,
+      currentTime: null,
     };
   };
 
@@ -47,13 +49,11 @@ class Player extends Component {
       currentTime = this.state.currentTime;
     } else currentTime = this.textTimeContentToRealTime(timeElement.textContent);
     let width = parseInt(window.getComputedStyle(wrapper).getPropertyValue('width')) * currentTime / this.getTotalTime();
-
-    if (listen) {if (width > this.setProgressFromClick()) width = this.setProgressFromClick();}
-
+    if (listen) {if (width > this.setProgress()) width = this.setProgress();}
     sought.style.width = width + 'px';
   };
 
-  setProgressFromClick = () => {
+  setProgress = () => {
     const indicator = document.querySelector('.indicator');
     const sought = document.querySelector('.sought');
     let left = parseInt(window.getComputedStyle(indicator).getPropertyValue('left'));
@@ -61,12 +61,10 @@ class Player extends Component {
     return left;
   };
 
-
   textTimeContentToRealTime = (textTimeContent) => {
     const minutes = Number(textTimeContent.split(':')[0]);
     const seconds = Number(textTimeContent.split(':')[1]);
     const realTime = minutes * 60 + seconds;
-    if (realTime === 0) return 0.1;
     return realTime;
   };
 
@@ -75,8 +73,14 @@ class Player extends Component {
     return Number(total.textContent);
   };
 
+  getCurrentTimeOnDragMove = () => {
+    const timeElement = document.querySelector('.current-time');
+    const currentTime = this.textTimeContentToRealTime(timeElement.textContent);
+    return currentTime;
+  };
+
   render() {
-    const { track, startButton, currentTime } = this.state;
+    const { track, currentTime} = this.state;
 
     return (
       <div className="player">
@@ -88,13 +92,17 @@ class Player extends Component {
               currentTime: e.toFixed(3),
             });
             this.setProgressFromDrag(true);
+            this.props.setCurrentTime(Number(currentTime));
           }}
           onDragStart={e => this.setProgressFromDrag(false)}
-          onDragMove={e => this.setProgressFromDrag(false)}
+          onDragMove={e => {
+            this.setProgressFromDrag(false)
+            this.props.setCurrentTime(this.getCurrentTimeOnDragMove());
+          }}
           onDragEnd={e => this.setProgressFromDrag(false)}
-          onPause={e => this.setProgressFromClick()}
-          onPlay={e => this.setProgressFromClick()}
-          onEnded={e => this.setProgressFromClick()}
+          onPause={e => this.setProgress()}
+          onPlay={e => this.setProgress()}
+          onEnded={e => this.setProgress()}
         />
         <span className="player__track-duration" id="track-duration"></span>
         <span className="player__crack"></span>
@@ -111,4 +119,8 @@ const mapStateToProps = (state) => ({
   track: state.rootReducer.track,
 });
 
-export default connect(mapStateToProps, null)(Player);
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentTime: (currentTime) => dispatch(setCurrentTime(currentTime)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Player);

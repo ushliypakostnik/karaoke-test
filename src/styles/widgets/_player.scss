@@ -1,0 +1,95 @@
+// React H5 Audio Player customization (Hello !important style (((( )
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+// stylelint-disable
+
+.react-h5-audio-player {
+  .flex {
+    display: block !important;
+    box-shadow: none !important;
+    padding-left: 90px !important;
+    padding-right: 115px !important;
+
+    .toggle-play-wrapper {
+      position: relative;
+      display: block !important;
+      flex: none !important;
+
+      .toggle-play-button {
+        left: -34px !important;
+        top: 2px !important;
+        background: $color_primary !important;
+        width: 36px !important;
+        height: 36px !important;
+
+        .play-icon {
+          top: -2px;
+          left: 11px !important;
+        }
+
+        .pause-icon {
+          top: -1px;
+          left: 8px !important;
+          box-shadow: $color_primary 7px 0px 0px 0px inset !important;
+        }
+      }
+    }
+
+    .progress-bar-wrapper {
+      pointer-events: none;
+      position: relative !important;
+      padding-top: 18px !important;
+      padding-right: 0 !important;
+      display: block !important;
+      flex: none !important;
+
+      .progress-bar {
+        height: 4px !important;
+        padding-right: 7px !important;
+        background: $color_gray !important;
+      }
+
+      .indicator {
+        pointer-events: auto;
+        background: $color_primary !important;
+        top: 13px !important;
+        width: 14px !important;
+        height: 14px !important;
+        opacity: 1 !important;
+        will-change: left;
+        @include transitions(left);
+      }
+
+      .sought {
+        width: 0;
+        position: relative;
+        top: -4px;
+        height: 4px;
+        background: $color_primary;
+        will-change: width;
+        @include transitions(width);
+      }
+
+      .audio-info {
+        position: absolute;
+        flex: none !important;
+        top: 10px;
+        right: -96px;
+        position: absolute;
+        color: $color_text_light;
+        @include text($font-family_sans, $font-size_small, $font-weight_sans_regular);
+
+        .time {
+
+        }
+
+        .volume-controls {
+          display: none;
+        }
+      }
+    }
+  }
+}
+// stylelint-enable

@@ -16,17 +16,17 @@ if (process.env.NODE_ENV !== 'production') {
   middlewares.push(loggerMiddleware);
 }
 
-/*
+
 const localStorageMiddleware = ({getState}) => {
   return (next) => (action) => {
     const result = next(action);
-    localStorage.setItem('localCollection', JSON.stringify(
-        getState().rootReducer.collection
-    ));
+    // localStorage.setItem('localCollection', JSON.stringify(
+    //  getState().rootReducer.anything
+    // ));
     return result;
   };
 };
-middlewares.push(localStorageMiddleware);*/
+middlewares.push(localStorageMiddleware);
 
 const reHydrateStore = (state) => {
   /* if (localStorage.getItem('localCollection') !== null) {
@@ -34,7 +34,7 @@ const reHydrateStore = (state) => {
     const _state = Object.assign({}, state, {
         rootReducer: {
           ...state.rootReducer,
-          collection: localCollection,
+          anything: localCollection,
         },
     });
     return _state;

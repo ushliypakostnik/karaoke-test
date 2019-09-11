@@ -9,6 +9,8 @@ export const REQUEST_TRACK_TRANSCRIPT = 'REQUEST_TRACK_TRANSCRIPT';
 export const REQUEST_TRACK_TRANSCRIPT_SUCCESS = 'REQUEST_TRACK_TRANSCRIPT_SUCCESS';
 export const REQUEST_TRACK_TRANSCRIPT_ERROR = 'REQUEST_TRACK_TRANSCRIPT_ERROR';
 
+export const SET_CURRENT_TIME = 'SET_CURRENT_TIME';
+
 
 // Action Creators
 ////////////////////////////////////////////////////////////
@@ -55,6 +57,14 @@ export const fetchTrackTranscript = (name) => {
       }
     );
   }
+};
+
+
+export const setCurrentTime = (currentTime) => {
+  return {
+    type: SET_CURRENT_TIME,
+    currentTime,
+  };
 };
 
 
