@@ -13,6 +13,7 @@ class Player extends Component {
     super(props);
 
     this.state = {
+      startButton: true,
       currentTime: 0,
     };
   };
@@ -38,29 +39,24 @@ class Player extends Component {
     };
   };
 
-  setProgressFromDrag = (listen) => {
+  setStartButtonToFalse = () => {
+    this.setState({
+      startButton: false,
+    });
+  };
+
+  setProgress = (listen) => {
     const timeElement = document.querySelector('.current-time');
     const wrapper = document.querySelector('.progress-bar-wrapper');
     const sought = document.querySelector('.sought');
+
     let currentTime;
     if (listen) {
       currentTime = this.state.currentTime;
     } else currentTime = this.textTimeContentToRealTime(timeElement.textContent);
     let width = parseInt(window.getComputedStyle(wrapper).getPropertyValue('width')) * currentTime / this.getTotalTime();
-
-    if (listen) {if (width > this.setProgressFromClick()) width = this.setProgressFromClick();}
-
     sought.style.width = width + 'px';
   };
-
-  setProgressFromClick = () => {
-    const indicator = document.querySelector('.indicator');
-    const sought = document.querySelector('.sought');
-    let left = parseInt(window.getComputedStyle(indicator).getPropertyValue('left'));
-    sought.style.width = left + 'px';
-    return left;
-  };
-
 
   textTimeContentToRealTime = (textTimeContent) => {
     const minutes = Number(textTimeContent.split(':')[0]);
@@ -77,24 +73,36 @@ class Player extends Component {
 
   render() {
     const { track, startButton, currentTime } = this.state;
+    console.log(currentTime);
 
     return (
       <div className="player">
         <AudioPlayer
           listenInterval={ LISTEN_INTERVAL }
           src={ `${process.env.PUBLIC_URL}${AUDIO_PATH}${track}` }
+          onPlay={e => {
+            console.log("onPlay");
+            if (startButton) {
+              e.preventDefault();
+              const button = document.querySelector('.toggle-play-button');
+              button.click();
+              button.classList.add('toggle-play-button--after-firs-click');
+              this.setStartButtonToFalse();
+            }
+          }}
           onListen={e => {
+            // console.log(e.toFixed(3));
             this.setState({
               currentTime: e.toFixed(3),
             });
-            this.setProgressFromDrag(true);
+            this.setProgress(true);
           }}
-          onDragStart={e => this.setProgressFromDrag(false)}
-          onDragMove={e => this.setProgressFromDrag(false)}
-          onDragEnd={e => this.setProgressFromDrag(false)}
-          onPause={e => this.setProgressFromClick()}
-          onPlay={e => this.setProgressFromClick()}
-          onEnded={e => this.setProgressFromClick()}
+          onDragMove={e => {
+            this.setProgress(false);
+          }}
+          onPause={e => {
+            console.log('onPaused', e);
+          }}
         />
         <span className="player__track-duration" id="track-duration"></span>
         <span className="player__crack"></span>
@@ -112,3 +120,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, null)(Player);
+
+

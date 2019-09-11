@@ -90,10 +90,19 @@
     position: absolute;
     top: 25px;
     right: 20px;
-    z-index: 1000;
+    z-index: $layout-fixed;
     background: $color_white;
     color: $color_text_light;
     @include text($font-family_sans, $font-size_small, $font-weight_sans_regular);
+  }
+
+  &__crack {
+    position: absolute;
+    top: 26px;
+    right: 101px;
+    z-index: $layout-fixed;
+    background: $color_white;
+    @include size(20px, 20px);
   }
 }
 
@@ -122,6 +131,7 @@
 }
 
 .word {
+  display: inline-block;
   white-space: nowrap;
 
   &--active {
@@ -137,67 +147,96 @@
 
 .react-h5-audio-player {
 
-  .toggle-play-wrapper {
-    flex: 1 0 45px !important;
-  }
-
   .flex {
+    display: block !important;
     box-shadow: none !important;
-  }
-
-  .volume-controls {
-    display: none;
-  }
-
-  .toggle-play-button {
-    left: 57% !important;
-    top: 2% !important;
-    background: $color_primary !important;
-    width: 36px !important;
-    height: 36px !important;
-
-    // for dirty crack  sudden uncontrolled autoplay
-    visibility: hidden;
-
-    &--after-firs-click {
-      visibility: visible;
-    }
-    // for dirty crack  sudden uncontrolled autoplay
-
-    .play-icon {
-      top: -2px;
-      left: 11px !important;
-    }
-
-    .pause-icon {
-      top: -1px;
-      left: 8px !important;
-      box-shadow: $color_primary 7px 0px 0px 0px inset !important;
-    }
-  }
-
-  .progress-bar-wrapper {
-    padding-top: 18px !important;
+    padding-left: 90px !important;
     padding-right: 115px !important;
-  }
 
-  .progress-bar {
-    height: 4px !important;
-    background: $color_gray !important;
-  }
+    .toggle-play-wrapper {
+      position: relative;
+      display: block !important;
+      flex: none !important;
 
-  .indicator {
-    background: $color_primary !important;
-    top: 13px !important;
-    width: 14px !important;
-    height: 14px !important;
-  }
+      .toggle-play-button {
+        left: -34px !important;
+        top: 2px !important;
+        background: $color_primary !important;
+        width: 36px !important;
+        height: 36px !important;
 
-  .audio-info {
-    top: 10px;
-    right: 20px;
-    position: absolute;
-    color: $color_text_light;
-    @include text($font-family_sans, $font-size_small, $font-weight_sans_regular);
+        // for dirty crack  sudden uncontrolled autoplay
+        // visibility: hidden;
+
+        // &--after-firs-click {
+        //  visibility: visible;
+        // }
+        // for dirty crack  sudden uncontrolled autoplay
+
+        .play-icon {
+          top: -2px;
+          left: 11px !important;
+        }
+
+        .pause-icon {
+          top: -1px;
+          left: 8px !important;
+          box-shadow: $color_primary 7px 0px 0px 0px inset !important;
+        }
+      }
+    }
+
+    .progress-bar-wrapper {
+      position: relative !important;
+      padding-top: 18px !important;
+      padding-right: 0 !important;
+      display: block !important;
+      flex: none !important;
+
+      .progress-bar {
+        height: 4px !important;
+        padding-right: 7px !important;
+        background: $color_gray !important;
+      }
+
+      .indicator {
+        background: $color_primary !important;
+        top: 13px !important;
+        width: 14px !important;
+        height: 14px !important;
+        opacity: 1 !important;
+        will-change: left;
+        @include transitions(left);
+      }
+
+      .sought {
+        pointer-events: none;
+        width: 0;
+        position: relative;
+        top: -4px;
+        height: 4px;
+        background: $color_primary;
+        will-change: width;
+        @include transitions(width);
+      }
+
+      .audio-info {
+        position: absolute;
+        flex: none !important;
+        top: 10px;
+        right: -96px;
+        position: absolute;
+        color: $color_text_light;
+        @include text($font-family_sans, $font-size_small, $font-weight_sans_regular);
+
+        .time {
+
+        }
+
+        .volume-controls {
+          display: none;
+        }
+      }
+    }
   }
 }

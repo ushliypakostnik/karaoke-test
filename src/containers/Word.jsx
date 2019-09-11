@@ -24,7 +24,6 @@ class Word extends Component {
 
   render() {
     const { word } = this.props;
-    console.log(word);
 
     return (
       <span className="word">{ word }</span>
@@ -33,7 +32,7 @@ class Word extends Component {
 };
 
 Word.propTypes = {
-  word: PropTypes.object.isRequired,
+  word: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({

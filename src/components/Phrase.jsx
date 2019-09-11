@@ -18,8 +18,10 @@ const Phrase = ({time, words}) => (
     <h4>{ time }</h4>
     <div className="phrase__text">
       {words.map((word, index) => {
-        console.log(word.word);
-        return <Word word={ word.word } />;
+        return <Word
+                 key={ index }
+                 word={ word.word }
+               />;
       })}
     </div>
   </div>

@@ -6,6 +6,7 @@
     "antd": "^3.21.4",
     "classnames": "^2.2.6",
     "history": "^4.9.0",
+    "postinstall": "^0.5.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -24,7 +25,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "stylelint": "stylelint ./src/styles"
+    "stylelint": "stylelint ./src/styles",
+    "postinstall": "sed -i '457,461d' node_modules/react-h5-audio-player/lib/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
