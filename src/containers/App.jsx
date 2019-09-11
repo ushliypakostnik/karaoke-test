@@ -49,7 +49,8 @@ class App extends Component {
           <div className={ ContentClass }>
             {!isLoaded ? <Spin size="large" /> :
             <Content
-              name={ track }
+              title={ track }
+              date={ CONTENT[0].date }
               transcript={ transcript }
             >
             </Content>}

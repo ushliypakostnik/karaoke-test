@@ -1,5 +1,5 @@
 export const CONTENT = [
-  { name: 'audio' }
+  { name: 'audio', date: '21 мар 18:03:41' }
 ];
 
 export const AUDIO_PATH = 'audio/';

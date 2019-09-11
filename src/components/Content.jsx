@@ -1,12 +1,20 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const Content = ({name, transcript}) => (
+import Phrase from './Phrase';
+
+const Content = ({title, date, transcript}) => (
   <div className="content">
-    <header><h1>{ name }</h1></header>
+    <header>
+      <h1>{ title }</h1>
+      <h4>{ date }</h4>
+    </header>
     {transcript.map((item, index) => {
-      console.log(item.timeStart);
-      console.log(item.words);
+      return <Phrase
+        words={ item.words }
+        time={ item.timeStart }
+        key={ index }
+      />;
     })}
   </div>
 );

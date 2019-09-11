@@ -4,6 +4,8 @@
 //////////////////////////////////////////////////////
 
 .card {
+  border-radius: $border-radius;
+  overflow: hidden;
   background: $color_white;
   box-shadow: $shadow_coords-x $shadow_coords-y $shadow_size $shadow_stretch $color_shadow;
 }

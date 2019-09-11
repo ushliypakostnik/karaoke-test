@@ -13,22 +13,16 @@ $transition_duration: 0.2s;
 $transition_timing-function: ease-out;
 $transition_delay: 0s;
 
-$shadow_coords-x: 0;
-$shadow_coords-y: 1px;
-$shadow_size: 4px;
-$shadow_stretch: 0;
-
-$text-shadow_coords-x: 0;
-$text-shadow_coords-y: 1px;
-$text-shadow_size: 4px;
+$shadow_coords-x: -1px;
+$shadow_coords-y: 2px;
+$shadow_size: 7px;
+$shadow_stretch: -1px;
 
 
 // Sizes
 //////////////////////////////////////////////////////
 
 $gutter: 20px;
-
-$input_height: $gutter * 2;
 
 
 // Colors
@@ -39,59 +33,46 @@ $input_height: $gutter * 2;
 
 $color_white: #fff;
 $color_black: #000;
+$color_gray: #e8e8e8;
 
-$color_mint: #44c6a8;
-$color_cian: #22b394;
-$color_blue: #2d84c6;
-$color_green: #21b499;
-$color_orange: #f0ac61;
-$color_red: #ef5a99;
+
+$color_blue: #3374eb;
+$color_blue_light: #dae7ff;
 
 // Main
 
-$color_primary: $color_mint;
-$color_second: $color_blue;
-$color_warning: $color_orange;
-$color_error: $color_red;
-$color_success: $color_green;
+$color_primary: $color_blue;
+$color_primary_light: $color_blue_light;
+
 
 // Special
 
-$color_light: #f9f9f9;
-
-$color_dark: #2f4050;
-
-$color_dark_alfa: rgba($color_dark, 0.66);
+$color_light: #f4f5f7;
 
 // Text
 
-$color_text: #6c7a89;
-$color_gray:  lighten($color_text, ($fade-percent * 5.5));
+$color_text: #05294b;
+$color_text_light: #8494a6;
 
 // Links
 
-$color_link: #557aa7;
-$color_link-hover: #44529c;
+$color_link: $color_primary;
+$color_link-hover: $color_primary_light;
 
 // Shadows
 
 $color_shadow: rgba($color_black, 0.15);
 
-// Brands
-
-$color_fb: #3b5998;
-$color_vk: #45668e;
-
 // Functional
 
-$color_disabled: darken($color_light, ($fade-percent * 4));
+$color_disabled: $color_light;
 $color_placeholder: $color_disabled;
 
 $color_background: $color_light;
 
 // Borders
 
-$color_border: $color_gray;
+$color_border: darken($color_light, ($fade-percent / 2));
 
 
 // Breackpoints and containers
@@ -150,10 +131,4 @@ $container_lg:                 ($content-container_lg + $gutter);
 
 // Roundings
 
-$border-radius_small: 2px;
-$border-radius_large: 4px;
-
-// Buttons
-
-$btn_padding_horizontal_base: 6px;
-$btn_padding_vertical_base: $gutter * 1.5;
+$border-radius: 4px;

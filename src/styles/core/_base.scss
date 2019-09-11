@@ -28,7 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   ::selection {
-    background: fade-out($color_second, $fade * 3);
+    background: fade-out($color_primary, $fade * 3);
   }
 }
 
@@ -64,55 +64,6 @@ button,
 a {
   box-sizing: border-box;
 }
-
-
-// Links
-a {
-  text-decoration: none;
-  @include link-color($color_link, $color_link-hover);
-}
-
-
-// Buttons
-
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: $border-radius_large;
-  padding: $btn_padding_horizontal_base $btn_padding_vertical_base;
-  @include btn-color($color_white, $color_primary);
-  @include text($font-family_sans, $font-size_normal, $font-weight_sans_regular);
-}
-
-
-// Controls
-
-input {
-  height: $input_height;
-  border: 1px solid $color_border;
-  border-radius: $border-radius_small;
-  padding: 0 ($gutter / 2);
-  @include text($font-family_sans, $font-size_normal, $font-weight_sans_regular);
-}
-
-textarea {
-  width: 100%;
-  max-width: 100%;
-}
-
-
-// Lists
-ul {
-  list-style-type: none;
-  padding-left: 0;
-  margin: 0;
-
-  // For classic style
-  &.list-style {
-    @extend %list-style;
-  }
-}
-
 
 // Sections
 main,

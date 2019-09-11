@@ -14,8 +14,8 @@ $normal-letter-spacing: normal;
 
 $font-size_base: 16px;
 $font-size_coefficient_large: 1.5;
-$font-size_coefficient_normal: 1.2;
-$font-size_coefficient_small: 1.1;
+$font-size_coefficient_normal: 1;
+$font-size_coefficient_small: 0.95;
 $font-size_coefficient_xsmall: 0.8;
 
 $font-size_large: round($font-size_base * $font-size_coefficient_large);
@@ -29,9 +29,9 @@ $line-height_normal: ceil($line-height_computed * $font-size_coefficient_normal)
 $line-height_small: ceil($line-height_computed * $font-size_coefficient_small);
 $line-height_xsmall: ceil($line-height_computed * $font-size_coefficient_xsmall);
 
-$font-family_sans: sans-serif;
+$font-family_sans: ProvimaNova, Arial, sans-serif;
 $font-weight_sans_regular: 400;
-$font-weight_sans_bold: 700;
+$font-weight_sans_bold: 600;
 
 
 // Universal Typographic Mixin
@@ -62,16 +62,10 @@ $font-weight_sans_bold: 700;
 // Typographic Base
 //////////////////////////////////////////////////////
 
-// Regular paragraph
-p {
-  color: $color_text;
-  margin-bottom: $gutter;
-  @include text($font-family_sans, $font-size_xsmall, $font-weight_sans_regular);
-}
-
 // Default headers
 
 h1 {
+  color: $color_text;
   @include text($font-family_sans, $font-size_large, $font-weight_sans_bold);
 
   @include xs {
@@ -79,38 +73,7 @@ h1 {
   }
 }
 
-h2 {
-  @include text($font-family_sans, $font-size_normal, $font-weight_sans_regular);
-}
-
-h3 {
-  @include text($font-family_sans, $font-size_small, $font-weight_sans_regular);
-}
-
 h4 {
-  @include text($font-family_sans, round($font-size_small * 0.9), $font-weight_sans_bold);
-}
-
-h5 {
-  @include text($font-family_sans, round($font-size_small * 0.75), $font-weight_sans_regular);
-}
-
-h6 {
-  @include text($font-family_sans, round($font-size_xsmall * 0.74), $font-weight_sans_regular);
-}
-
-// stylelint-disable-next-line selector-list-comma-newline-after, no-descending-specificity
-h1, h2, h3 {
-  &:first-child {
-    margin-top: 0;
-  }
-}
-
-// stylelint-disable-next-line selector-list-comma-newline-after, no-descending-specificity
-h1, h2, h3, h4, h5, h6 {
-  color: $color_text;
-}
-
-strong {
-  font-weight: $font-weight_sans_bold;
+  color: $color_text_light;
+  @include text($font-family_sans, $font-size_small, $font-weight_sans_regular);
 }

@@ -8,12 +8,11 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: $gutter * 4;
-  @include size(100%, 100vh);
+  padding: ($gutter * 4 + 4px) 0;
 
   &__container {
     width: 100%;
-    max-width: 500px;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,7 +23,7 @@
     min-height: 300px;
     width: 100%;
     margin-bottom: $gutter * 2;
-    padding: $gutter;
+    padding: $gutter ($gutter * 1.5);
 
     &--loading {
       display: flex;
@@ -34,13 +33,27 @@
   }
 
   &__player {
+    margin: 0 auto;
     width: 100%;
+    max-width: 740px;
   }
 }
 
 .content {
   header {
+    padding-top: 7px;
     border-bottom: 1px solid $color_border;
+    margin-bottom: 15px;
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: 14px;
+    }
   }
 }
 
@@ -49,18 +62,58 @@
 
   &__track-duration {
     position: absolute;
-    top: 23px;
-    right: 21px;
+    top: 25px;
+    right: 20px;
     z-index: 1000;
     background: $color_white;
+    color: $color_text_light;
+    @include text($font-family_sans, $font-size_small, $font-weight_sans_regular);
+  }
+}
+
+.phrase {
+  position: relative;
+  padding: 13px 30px 15px 54px;
+
+  &__avatar {
+    position: absolute;
+    left: 4px;
+    top: 16px;
+  }
+
+  h4 {
+    margin: 0;
+  }
+
+  &__text {
+    @extend %very-long-letters-protection;
+    padding-top: 6px;
+
+    .word:not(:last-child) {
+      margin-right: 0.375em;
+    }
+  }
+}
+
+.word {
+  white-space: nowrap;
+
+  &--active {
+    background: $color_primary_light;
   }
 }
 
 
-// React H5 Audio Player customization
+// React H5 Audio Player customization (Hello !important style (((( )
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
 .react-h5-audio-player {
+
+  .toggle-play-wrapper {
+    flex: 1 0 45px !important;
+  }
 
   .flex {
     box-shadow: none !important;
@@ -71,25 +124,54 @@
   }
 
   .toggle-play-button {
+    left: 57% !important;
+    top: 2% !important;
+    background: $color_primary !important;
+    width: 36px !important;
+    height: 36px !important;
+
+    // for dirty crack  sudden uncontrolled autoplay
     visibility: hidden;
 
     &--after-firs-click {
       visibility: visible;
     }
+    // for dirty crack  sudden uncontrolled autoplay
+
+    .play-icon {
+      top: -2px;
+      left: 11px !important;
+    }
+
+    .pause-icon {
+      top: -1px;
+      left: 8px !important;
+      box-shadow: $color_primary 7px 0px 0px 0px inset !important;
+    }
   }
 
   .progress-bar-wrapper {
-    padding-top: 19px !important;
-    padding-right: 140px !important;
+    padding-top: 18px !important;
+    padding-right: 115px !important;
+  }
+
+  .progress-bar {
+    height: 4px !important;
+    background: $color_gray !important;
   }
 
   .indicator {
-    top: 11px !important;
+    background: $color_primary !important;
+    top: 13px !important;
+    width: 14px !important;
+    height: 14px !important;
   }
 
   .audio-info {
-    top: 8px;
+    top: 10px;
     right: 20px;
     position: absolute;
+    color: $color_text_light;
+    @include text($font-family_sans, $font-size_small, $font-weight_sans_regular);
   }
 }
