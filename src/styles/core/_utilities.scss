@@ -9,15 +9,3 @@
   background: $color_white;
   box-shadow: $shadow_coords-x $shadow_coords-y $shadow_size $shadow_stretch $color_shadow;
 }
-
-// Amimation class example
-.pulse {
-  $fadetransition-duration: $transition-duration * 2;
-  will-change: transform, opacity;
-  @include animation("pulse #{$transition-duration} infinite", "fadeOn #{$fadetransition-duration} forwards");
-}
-
-.pulse-slow {
-  will-change: transform;
-  animation: pulse ($transition-duration * 5) infinite;
-}

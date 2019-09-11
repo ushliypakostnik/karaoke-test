@@ -37,6 +37,32 @@
     width: 100%;
     max-width: 740px;
   }
+
+  @include gadgets {
+    padding: 0;
+
+    .page__container,
+    .page__player {
+      max-width: 100%;
+    }
+
+    .page__player {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: $layout-fixed;
+    }
+
+    .page__content {
+      margin-bottom: 0;
+    }
+
+    .page__container {
+      position: relative;
+      z-index: $layout-body;
+    }
+  }
 }
 
 .content {

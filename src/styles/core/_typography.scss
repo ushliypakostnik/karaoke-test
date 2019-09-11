@@ -68,7 +68,7 @@ h1 {
   color: $color_text;
   @include text($font-family_sans, $font-size_large, $font-weight_sans_bold);
 
-  @include xs {
+  @include gadgets {
     @include text($font-family_sans, $font-size_normal, $font-weight_sans_bold);
   }
 }

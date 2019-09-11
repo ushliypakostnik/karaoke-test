@@ -55,9 +55,9 @@ class App extends Component {
             >
             </Content>}
           </div>
-          <div className="card page__player">
-            <Player />
-          </div>
+        </div>
+        <div className="card page__player">
+          <Player />
         </div>
       </div>
     );
