@@ -31,7 +31,7 @@ Cборка
 
 Запуск cтатического анализатора стилей
 
-    m$ npm run stylelint
+    $ npm run stylelint
 
 
 
